@@ -1,3 +1,4 @@
+import { ApolloServer } from 'apollo-server-express';
 import cors from 'cors';
 import express from 'express';
 import { expressjwt } from 'express-jwt';
@@ -24,6 +25,9 @@ app.post('/login', async (req, res) => {
     res.sendStatus(401);
   }
 });
+
+const typeDefs = null;
+const apolloServer = new ApolloServer( { typeDefs,resolvers} );
 
 app.listen({ port: PORT }, () => {
   console.log(`Server running on port ${PORT}`);
