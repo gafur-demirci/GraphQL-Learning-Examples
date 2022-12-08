@@ -5,12 +5,11 @@ export const resolvers = {
         jobs: () => Job.findAll(),
     },
     Job: {
-        company: (job) => { Company.findById(job.companyId);
+        company: (job) => Company.findById(job.companyId),
             // console.log('resolving company for Job', job)
             // return {
             //     id: 'Fake',
             //     name: 'Fake Inc.'
             // };
-        },
     },
 };
