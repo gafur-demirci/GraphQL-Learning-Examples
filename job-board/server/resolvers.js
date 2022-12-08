@@ -14,4 +14,7 @@ export const resolvers = {
             //     name: 'Fake Inc.'
             // };
     },
+    Company: {
+        jobs: async (company) =>  Job.findAll( (job) => job.companyId === company.id),
+    }
 };
