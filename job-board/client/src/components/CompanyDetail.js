@@ -1,10 +1,17 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { companies } from '../fake-data';
+import { getCompanyById } from '../graphql/queries';
 
 function CompanyDetail() {
+  const [company, setCompany] = useState(null);
   const { companyId } = useParams();
-
-  const company = companies.find((company) => company.id === companyId);
+  useEffect(() => {
+    getCompanyById(companyId).then(setCompany);
+  }, [companyId])
+  console.log('[CompanyDetail] company: ' ,company);
+  if(!company){
+    return <p>Loading...</p>
+  }
   return (
     <div>
       <h1 className="title">

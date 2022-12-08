@@ -11,7 +11,7 @@ function JobDetail() {
     getJobById(jobId).then(setJob);
   }, [jobId]);
 
-  console.log('[JobDeatil job: ' ,job);
+  console.log('[JobDeatil] job: ' ,job);
   if(!job){
     return <p>Loading...</p>;
   }
