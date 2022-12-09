@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 function JobBoard() {
 	const [jobs, setJobs] = useState([]);
-	const [error, setError] = userState(false);
+	const [error, setError] = useState(false);
 	useEffect(() => {
 		getJobs().then(setJobs)
 			.catch((error) => setError(true))
