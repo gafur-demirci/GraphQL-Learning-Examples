@@ -6,6 +6,7 @@ type Query{
 # mutation ile fonksiyonel operations'lar tanımlanır
 type Mutation{
     createJob( input: CreateJobInput! ): Job
+    deleteJob(id: ID!): Job
 }
 
 type Company{
