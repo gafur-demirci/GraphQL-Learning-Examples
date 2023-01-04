@@ -3,6 +3,10 @@ type Query{
     job(id: ID!): Job
     jobs: [Job!]
 }
+# mutation ile fonksiyonel operations'lar tanımlanır
+type Mutation{
+    createJob( input: CreateJobInput! ): Job
+}
 
 type Company{
     id: ID!
@@ -15,5 +19,11 @@ type Job{
     id: ID!
     title: String!
     company: Company
+    description: String
+}
+
+input CreateJobInput{
+    title: String!
+    companyId: ID!
     description: String
 }
