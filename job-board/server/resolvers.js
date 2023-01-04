@@ -6,6 +6,11 @@ export const resolvers = {
         job: (_root, { id }) => Job.findById(id),
         jobs: () => Job.findAll(),
     },
+
+    Mutation: {
+        createJob: (_root, { input }) => Job.create(input),
+    },
+    
     Job: {
         company: (job) => Company.findById(job.companyId),
             // console.log('resolving company for Job', job)
