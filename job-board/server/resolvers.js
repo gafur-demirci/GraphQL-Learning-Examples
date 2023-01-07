@@ -1,5 +1,12 @@
 import { Company, Job } from './db.js';
 
+// readability
+function rejectIf(condition) {
+    if (condition) {
+        throw new Error('Unauthorized!');
+    }
+}
+
 export const resolvers = {
     Query: {
         company: (_root, { id }) => Company.findById(id),
@@ -10,23 +17,32 @@ export const resolvers = {
     Mutation: {
         createJob: (_root, { input }, { user }) => {
             console.log('[createJob] user: ', user);
-            if(!user){
-                throw new Error('Unauthorized!');
-            }
-            return Job.create({ ...input, companyId: user.companyId})},
-        deleteJob: (_root,{ id }) => Job.delete(id),
-        updateJob: (_root, { input }) => Job.update(input),
+            rejectIf(!user);
+            return Job.create({ ...input, companyId: user.companyId })
+        },
+        deleteJob: async (_root, { id }, { user }) => {
+            rejectIf(!user);
+            const job = await Job.findById(id);
+            rejectIf(job.companyId !== user.companyId);
+            return Job.delete(job.id);
+        },
+        updateJob: async (_root, { input }, { user }) => {
+            rejectIf(!user);
+            const job = await Job.findById(input.id);
+            rejectIf(job.companyId !== user.companyId);
+            return Job.update( {...input, companyId: user.companyId });
+        }
     },
-    
+
     Job: {
         company: (job) => Company.findById(job.companyId),
-            // console.log('resolving company for Job', job)
-            // return {
-            //     id: 'Fake',
-            //     name: 'Fake Inc.'
-            // };
+        // console.log('resolving company for Job', job)
+        // return {
+        //     id: 'Fake',
+        //     name: 'Fake Inc.'
+        // };
     },
     Company: {
-        jobs: async (company) =>  Job.findAll( (job) => job.companyId === company.id),
+        jobs: async (company) => Job.findAll((job) => job.companyId === company.id),
     }
 };
