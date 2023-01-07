@@ -29,7 +29,8 @@ app.post('/login', async (req, res) => {
 });
 
 const typeDefs = await readFile('./schema.graphql', 'utf8');
-const apolloServer = new ApolloServer( { typeDefs,resolvers} );
+const context = ({req, res}) => ({ auth: req.auth });
+const apolloServer = new ApolloServer( { typeDefs,resolvers, context} );
 // apollo-server-express i başlatır async
 await apolloServer.start();
 // apolloserver ile express arasında ki bağlantıyı sağlar, { express() } nesnesi alır, path ile isteklerin hangi url ile karşılanacağı belirtilir

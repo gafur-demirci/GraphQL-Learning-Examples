@@ -58,5 +58,47 @@
     "title": "DevOps Engineer",
     "companyId": "wvdB54Gqbdp_NZTXK9Tue",
     "description": "We need somebody to restart the servers when they fall over."
+  },
+  {
+    "id": "LRyMZvYtrZMn6OM1T-zA4",
+    "title": "Middle Frontend Developer",
+    "companyId": "pVbRRBQtMVw6lUAkj1k43",
+    "description": "We need Middle Frontend Developer"
+  },
+  {
+    "id": "PwbnITQYLX4xfBarqBv72",
+    "title": "Junior Frontend Developer",
+    "companyId": "pVbRRBQtMVw6lUAkj1k43",
+    "description": "We need Junior Frontend Developer"
+  },
+  {
+    "id": "_0G46RemKc4DJAnc2xLNs",
+    "title": "Junior Fullstack Developer",
+    "companyId": "wvdB54Gqbdp_NZTXK9Tue",
+    "description": "We need Junior Fullstack Developer"
+  },
+  {
+    "id": "tOF-MDmsfKk2KVEKkTzvv",
+    "title": "Middle Fullstack Developer",
+    "companyId": "wvdB54Gqbdp_NZTXK9Tue",
+    "description": "We need Middle Fullstack Developer"
+  },
+  {
+    "id": "hnPtUuUs-oQ8gpkc9keZr",
+    "title": "Senior Fullstack Developer",
+    "companyId": "wvdB54Gqbdp_NZTXK9Tue",
+    "description": "We need Senior Fullstack Developer"
+  },
+  {
+    "id": "VpRIWFDbbmP1PwLbJu0u9",
+    "title": "Junior Frontend Developer",
+    "companyId": "pVbRRBQtMVw6lUAkj1k43",
+    "description": "We need Junior Frontend Developer"
+  },
+  {
+    "id": "VJi2t5egHRlnzmRdPSikU",
+    "title": "Junior Game Developer",
+    "companyId": "pVbRRBQtMVw6lUAkj1k43",
+    "description": "We need Junior Game Developer"
   }
 ]
