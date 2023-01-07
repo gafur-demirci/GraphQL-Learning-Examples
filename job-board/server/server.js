@@ -22,19 +22,28 @@ app.post('/login', async (req, res) => {
   const user = await User.findOne((user) => user.email === email);
   if (user && user.password === password) {
     const token = jwt.sign({ sub: user.id }, JWT_SECRET);
-    res.json({ token });  
+    res.json({ token });
   } else {
     res.sendStatus(401);
   }
 });
 
 const typeDefs = await readFile('./schema.graphql', 'utf8');
-const context = ({req, res}) => ({ auth: req.auth });
-const apolloServer = new ApolloServer( { typeDefs,resolvers, context} );
+
+const context = async ({ req, res }) => {
+  if (req.auth) {
+    // auth olmuş(login success) kullanıcıyı id sine göre bulma
+    const user = await User.findById(req.auth.sub);
+    return { user };
+  }
+  return {};
+};
+
+const apolloServer = new ApolloServer({ typeDefs, resolvers, context });
 // apollo-server-express i başlatır async
 await apolloServer.start();
 // apolloserver ile express arasında ki bağlantıyı sağlar, { express() } nesnesi alır, path ile isteklerin hangi url ile karşılanacağı belirtilir
-apolloServer.applyMiddleware( { app, path: '/graphql' } )
+apolloServer.applyMiddleware({ app, path: '/graphql' })
 
 app.listen({ port: PORT }, () => {
   console.log(`Server running on port ${PORT}`);
