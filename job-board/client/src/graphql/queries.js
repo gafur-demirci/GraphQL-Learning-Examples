@@ -57,11 +57,11 @@ export async function getJobById(id) {
             job(id: $id) {
                 id
                 title
-                company {
-                id
-                name
-                }
                 description
+                company {
+                    id
+                    name
+                }
             }
         }
     `;
@@ -78,7 +78,8 @@ export async function getJobs() {
                 id
                 title
                 company {
-                name
+                    id
+                    name
                 }
             }
         }
