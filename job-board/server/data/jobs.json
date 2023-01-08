@@ -102,21 +102,21 @@
     "description": "We need Junior Game Developer"
   },
   {
-    "id": "i6LvSv6vK5dOfiVcKwPud",
-    "title": "Junior Game Developer",
-    "companyId": "pVbRRBQtMVw6lUAkj1k43",
-    "description": "We need Junior Game Developer"
-  },
-  {
-    "id": "iLwiG1hSfX_do4qf40Q4N",
-    "title": "Junior Game Developer",
-    "companyId": "pVbRRBQtMVw6lUAkj1k43",
-    "description": "We need Junior Game Developer"
-  },
-  {
     "id": "uiojok5rPkef8QyWTN-i3",
     "title": "Junior Game Developer",
     "description": "We need Junior Game Developer",
     "companyId": "wvdB54Gqbdp_NZTXK9Tue"
+  },
+  {
+    "id": "IQ0ZLxdbVmm_vofsjf7Ce",
+    "title": "Senior Q&A Tester",
+    "description": "We need Senior Q&A Tester ",
+    "companyId": "pVbRRBQtMVw6lUAkj1k43"
+  },
+  {
+    "id": "YeMtnW9bNED1eIhF0yyTH",
+    "title": "Junior Q&A Tester",
+    "description": "We need Junior Q&A Tester",
+    "companyId": "pVbRRBQtMVw6lUAkj1k43"
   }
 ]
