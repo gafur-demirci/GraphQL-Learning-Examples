@@ -4,7 +4,7 @@ import { getAccessToken } from '../auth';
 
 const GRAPHQL_URL = 'http://localhost:9000/graphql';
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
     uri: GRAPHQL_URL,
     cache: new InMemoryCache()
     // Tüm isteklerin genel ayarları bu alanda belirlenebilir.
@@ -40,6 +40,19 @@ const JOB_Query = gql`
         }
     }
     ${JOB_DETAIL_FRAGMENT}
+`;
+
+export const JOBS_Query = gql`
+query {
+    jobs {
+        id
+        title
+        company {
+            id
+            name
+        }
+    }
+}
 `;
 
 export async function createJob(input) {
@@ -102,24 +115,24 @@ export async function getJobById(id) {
     return job;
 };
 
-export async function getJobs() {
-    const query = gql`
-        query {
-            jobs {
-                id
-                title
-                company {
-                    id
-                    name
-                }
-            }
-        }
-    `;
-    // Sadece getJobs için fetchPolicy belirlenir.
-    const { data: { jobs } } = await client.query({
-        query,
-        fetchPolicy: 'network-only',
-    });
-    //const { jobs } = await request(GRAPHQL_URL, query);
-    return jobs;
-};
+// export async function getJobs() {
+//     const query = gql`
+//         query {
+//             jobs {
+//                 id
+//                 title
+//                 company {
+//                     id
+//                     name
+//                 }
+//             }
+//         }
+//     `;
+//     // Sadece getJobs için fetchPolicy belirlenir.
+//     const { data: { jobs } } = await client.query({
+//         query,
+//         fetchPolicy: 'network-only',
+//     });
+//     //const { jobs } = await request(GRAPHQL_URL, query);
+//     return jobs;
+// };
