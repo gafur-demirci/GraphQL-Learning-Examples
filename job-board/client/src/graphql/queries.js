@@ -21,9 +21,8 @@ const client = new ApolloClient({
     // }
 });
 
-const JOB_Query = gql`
-query getJobById($id: ID!){
-    job(id: $id) {
+const JOB_DETAIL_FRAGMENT = gql`
+    fragment JobDetail on Job {
         id
         title
         description
@@ -32,22 +31,25 @@ query getJobById($id: ID!){
             name
         }
     }
-}
+`;
+
+const JOB_Query = gql`
+    query getJobById($id: ID!){
+        job(id: $id) {
+            ...JobDetail
+        }
+    }
+    ${JOB_DETAIL_FRAGMENT}
 `;
 
 export async function createJob(input) {
     const mutation = gql`
         mutation CreateNewJob($input: CreateJobInput!) {
             job: createJob(input: $input){
-                id
-                title
-                description
-                company {
-                    id
-                    name
-                }
+                ...JobDetail
             }
         }
+        ${JOB_DETAIL_FRAGMENT}
     `;
     const variables = { input }
     const headers = { 'Authorization': 'Bearer ' + getAccessToken() };
@@ -57,10 +59,10 @@ export async function createJob(input) {
             mutation,
             variables,
             context,
-            update: (cache, {data: { job }}) => {
+            update: (cache, { data: { job } }) => {
                 cache.writeQuery({
                     query: JOB_Query,
-                    variables: {id: job.id},
+                    variables: { id: job.id },
                     data: { job }
                 });
             },
