@@ -21,24 +21,50 @@ const client = new ApolloClient({
     // }
 });
 
+const JOB_Query = gql`
+query getJobById($id: ID!){
+    job(id: $id) {
+        id
+        title
+        description
+        company {
+            id
+            name
+        }
+    }
+}
+`;
+
 export async function createJob(input) {
     const mutation = gql`
         mutation CreateNewJob($input: CreateJobInput!) {
-            job: createJob(input: $input) {
+            job: createJob(input: $input){
                 id
-                # title
-                # description
-                # company {
-                #     id
-                #     name
-                # }
+                title
+                description
+                company {
+                    id
+                    name
+                }
             }
         }
     `;
     const variables = { input }
     const headers = { 'Authorization': 'Bearer ' + getAccessToken() };
     const context = { headers };
-    const { data: { job } } = await client.mutate({ mutation, variables, context });
+    const { data: { job } } = await client.mutate(
+        {
+            mutation,
+            variables,
+            context,
+            update: (cache, {data: { job }}) => {
+                cache.writeQuery({
+                    query: JOB_Query,
+                    variables: {id: job.id},
+                    data: { job }
+                });
+            },
+        });
     //const { job } = await request(GRAPHQL_URL, query, variables, headers);
     return job;
 }
@@ -64,21 +90,12 @@ export async function getCompanyById(id) {
 }
 
 export async function getJobById(id) {
-    const query = gql`
-        query getJobById($id: ID!){
-            job(id: $id) {
-                id
-                title
-                description
-                company {
-                    id
-                    name
-                }
-            }
-        }
-    `;
+
     const variables = { id }
-    const { data: { job } } = await client.query({ query, variables });
+    const { data: { job } } = await client.query({
+        query: JOB_Query,
+        variables
+    });
     //const { job } = await request(GRAPHQL_URL, query, variables);
     return job;
 };
@@ -97,10 +114,10 @@ export async function getJobs() {
         }
     `;
     // Sadece getJobs için fetchPolicy belirlenir.
-    const { data: { jobs } } = await client.query({ 
+    const { data: { jobs } } = await client.query({
         query,
         fetchPolicy: 'network-only',
-     });
+    });
     //const { jobs } = await request(GRAPHQL_URL, query);
     return jobs;
 };
