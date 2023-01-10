@@ -8,50 +8,14 @@
   {
     "id": "GR7vTA_btqTnLtXcEDX8C",
     "companyId": "pVbRRBQtMVw6lUAkj1k43",
-    "title": "Backend Developer",
-    "description": "We are looking for a Backend Developer familiar with Node.js and Express."
+    "title": "Senior Backend Developer",
+    "description": "We are looking for a Senior Backend Developer familiar with Node.js and Express."
   },
   {
     "id": "yX71WsWqBRAFuMAIDj4W0",
     "companyId": "wvdB54Gqbdp_NZTXK9Tue",
     "title": "Full-Stack Developer",
     "description": "We are looking for a Full-Stack Developer familiar with Node.js, Express, and React."
-  },
-  {
-    "id": "K_MfF4klSyfLrmKh8E-od",
-    "title": "Job 1",
-    "companyId": "wvdB54Gqbdp_NZTXK9Tue",
-    "description": "New Job From mutation"
-  },
-  {
-    "id": "j84Nkq9Nqn8jS2_LUbDbu",
-    "title": "Job 3",
-    "companyId": "wvdB54Gqbdp_NZTXK9Tue",
-    "description": ""
-  },
-  {
-    "id": "quTTzqK5SiIrRpu45i-v5",
-    "title": "Job 4",
-    "companyId": "wvdB54Gqbdp_NZTXK9Tue",
-    "description": ""
-  },
-  {
-    "id": "uJIyYSryndC79JYIoihqn",
-    "title": "Job 5",
-    "companyId": "wvdB54Gqbdp_NZTXK9Tue",
-    "description": ""
-  },
-  {
-    "id": "W51EWAO9dexLYEtIX-bNM",
-    "title": "goobok job 1",
-    "companyId": "wvdB54Gqbdp_NZTXK9Tue",
-    "description": "Goobok job 1 description"
-  },
-  {
-    "id": "PXa7U74rLOUJ02-9M8g7u",
-    "title": "DevOps Engineer",
-    "companyId": "wvdB54Gqbdp_NZTXK9Tue",
-    "description": "We need somebody to restart the servers when they fall over."
   },
   {
     "id": "3wvzMOljB-ONsHjEoB60b",
@@ -90,18 +54,6 @@
     "description": "We need Senior Fullstack Developer"
   },
   {
-    "id": "VpRIWFDbbmP1PwLbJu0u9",
-    "title": "Junior Frontend Developer",
-    "companyId": "pVbRRBQtMVw6lUAkj1k43",
-    "description": "We need Junior Frontend Developer"
-  },
-  {
-    "id": "VJi2t5egHRlnzmRdPSikU",
-    "title": "Junior Game Developer",
-    "companyId": "pVbRRBQtMVw6lUAkj1k43",
-    "description": "We need Junior Game Developer"
-  },
-  {
     "id": "uiojok5rPkef8QyWTN-i3",
     "title": "Junior Game Developer",
     "description": "We need Junior Game Developer",
@@ -135,12 +87,6 @@
     "id": "8tqahAdfk9egvMsJBADhL",
     "title": "Senior AI Developer",
     "description": "We need Senior AI Developer.",
-    "companyId": "pVbRRBQtMVw6lUAkj1k43"
-  },
-  {
-    "id": "C8-c9x-UEJR6dFYGZlOn6",
-    "title": "New Developer",
-    "description": "We need Developer.",
     "companyId": "pVbRRBQtMVw6lUAkj1k43"
   }
 ]
