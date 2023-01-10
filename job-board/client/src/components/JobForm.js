@@ -9,7 +9,7 @@ function JobForm() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   // sayfa açıldığında tanımlanıyor submit edildiğinde kullanılıyor.(createJob)
-  const [mutate] = useMutation(CREATE_JOB_Mutation);
+  const [mutate, {loading}] = useMutation(CREATE_JOB_Mutation);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -61,7 +61,8 @@ function JobForm() {
           </div>
           <div className="field">
             <div className="control">
-              <button className="button is-link" onClick={handleSubmit}>
+              <button className="button is-link" disabled= {loading}
+              onClick={handleSubmit}>
                 Submit
               </button>
             </div>
