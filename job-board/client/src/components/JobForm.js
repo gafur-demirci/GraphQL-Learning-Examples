@@ -1,31 +1,34 @@
-import { useMutation } from '@apollo/client';
+// import { useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { getAccessToken } from '../auth';
-import { CREATE_JOB_Mutation, JOB_Query } from '../graphql/queries';
+// import { getAccessToken } from '../auth';
+import { useCreateJob } from '../graphql/hooks';
+// import { CREATE_JOB_Mutation, JOB_Query } from '../graphql/queries';
 
 function JobForm() {
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   // sayfa açıldığında tanımlanıyor submit edildiğinde kullanılıyor.(createJob)
-  const [mutate] = useMutation(CREATE_JOB_Mutation);
+  // const [mutate, {loading}] = useMutation(CREATE_JOB_Mutation);
+  const { createJob, loading } = useCreateJob();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { data: { job } } = await mutate({
-      variables: { input: { title, description } },
-      context: {
-        headers: { 'Authorization': 'Bearer ' + getAccessToken() }
-      },
-      update: (cache, { data: { job } }) => {
-        cache.writeQuery({
-          query: JOB_Query,
-          variables: { id: job.id },
-          data: { job }
-        });
-      },
-    })
+    const job = await createJob(title,description);
+    // const { data: { job } } = await mutate({
+    //   variables: { input: { title, description } },
+    //   context: {
+    //     headers: { 'Authorization': 'Bearer ' + getAccessToken() }
+    //   },
+    //   update: (cache, { data: { job } }) => {
+    //     cache.writeQuery({
+    //       query: JOB_Query,
+    //       variables: { id: job.id },
+    //       data: { job }
+    //     });
+    //   },
+    // })
     console.log('should post a new job:', { title, description });
     // const job = await createJob({ title, description });
     console.log('new job created:', job);
@@ -61,7 +64,8 @@ function JobForm() {
           </div>
           <div className="field">
             <div className="control">
-              <button className="button is-link" onClick={handleSubmit}>
+              <button className="button is-link" disabled= {loading}
+              onClick={handleSubmit}>
                 Submit
               </button>
             </div>
