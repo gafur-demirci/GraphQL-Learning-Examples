@@ -1,6 +1,32 @@
 const { ApolloServer, gql } = require('apollo-server');
 
 // Scaler Types : String, Int, Float, Boolean
+const products = [
+    {
+        id: "1",
+        name: "Black Shoe",
+        description: "New Black Shoes",
+        quantity: 5,
+        price: 100.50,
+        onSale: true
+    },
+    {
+        id: "2",
+        name: "White Shoe",
+        description: "New White Shoes",
+        quantity: 6,
+        price: 110.50,
+        onSale: false
+    },
+    {
+        id: "3",
+        name: "Red Shoe",
+        description: "New Red Shoes",
+        quantity: 7,
+        price: 120.50,
+        onSale: true
+    }
+];
 
 const typeDefs = gql`
 
@@ -10,10 +36,11 @@ const typeDefs = gql`
         salary: Float
         isLive: Boolean
         products: [Product!]!
+        product(id: String!): Product!
     }
 
     type Product {
-        id: ID!
+        id: String!
         name: String!
         description: String!
         quantity: Int!
@@ -29,30 +56,11 @@ const resolvers = {
         age: () => { return 28 },
         salary: () => { return 123456.123 },
         isLive: () => { return false },
-        products: () => {
-            return [
-                {
-                    name: "Black Shoe",
-                    description: "New Black Shoes",
-                    quantity: 5,
-                    price: 100.50,
-                    onSale: true
-                },
-                {
-                    name: "White Shoe",
-                    description: "New White Shoes",
-                    quantity: 6,
-                    price: 110.50,
-                    onSale: false
-                },
-                {
-                    name: "Red Shoe",
-                    description: "New Red Shoes",
-                    quantity: 7,
-                    price: 120.50,
-                    onSale: true
-                }
-            ]
+        products: () => { return products },
+        product: (parent, args, context) => { 
+
+            let result = products.filter((product) => product.id === args.id )
+            return result[0];
         }
     },
 };
