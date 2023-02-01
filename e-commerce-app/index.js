@@ -28,6 +28,21 @@ const products = [
     }
 ];
 
+const categories = [
+    {
+        id: "1",
+        name: "Men"
+    },
+    {
+        id: "2",
+        name: "Women"
+    },
+    {
+        id: "3",
+        name: "Child"
+    }
+]
+
 const typeDefs = gql`
 
     type Query {
@@ -37,15 +52,24 @@ const typeDefs = gql`
         isLive: Boolean
         products: [Product!]!
         product(id: String!): Product!
+        categories: [Category!]!
+        category(id: String!): Category
     }
 
     type Product {
+
         id: String!
         name: String!
         description: String!
         quantity: Int!
         price: Float!
         onSale: Boolean!
+    }
+
+    type Category {
+
+        id: String!
+        name: String!
     }
 
 `;
@@ -57,10 +81,15 @@ const resolvers = {
         salary: () => { return 123456.123 },
         isLive: () => { return false },
         products: () => { return products },
-        product: (parent, args, context) => { 
+        product: (parent, args, context) => {
 
-            let result = products.filter((product) => product.id === args.id )
-            return result[0];
+            let result = products.find((product) => product.id === args.id)
+            return result;
+        },
+        categories: () => { return categories },
+        category: (parent, args, context) => {
+            let category = categories.find((category) => category.id === args.id)
+            return category;
         }
     },
 };
