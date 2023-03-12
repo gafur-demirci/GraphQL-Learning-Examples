@@ -7,7 +7,8 @@ exports.products = [
         description: "New Black Shoes",
         quantity: 5,
         price: 100.50,
-        onSale: true
+        onSale: true,
+        categoryId: '1'
     },
     {
         id: "2",
@@ -15,7 +16,8 @@ exports.products = [
         description: "New White Shoes",
         quantity: 6,
         price: 110.50,
-        onSale: false
+        onSale: false,
+        categoryId: '2'
     },
     {
         id: "3",
@@ -23,7 +25,17 @@ exports.products = [
         description: "New Red Shoes",
         quantity: 7,
         price: 120.50,
-        onSale: true
+        onSale: true,
+        categoryId: '3'
+    },
+    {
+        id: "3",
+        name: "Dark Red Shoe",
+        description: "New Dark Red Shoes",
+        quantity: 7,
+        price: 120.50,
+        onSale: true,
+        categoryId: '3'
     }
 ];
 
