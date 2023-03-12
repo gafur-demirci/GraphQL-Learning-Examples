@@ -22,7 +22,8 @@ const typeDefs = gql`
         quantity: Int!
         price: Float!
         onSale: Boolean!
-        categoryId: String!
+        # categoryId: String!
+        category: Category
     }
 
     type Category {
@@ -56,6 +57,13 @@ const resolvers = {
         products: (parent, args, context) => {
 
             let result = products.filter((product) => product.categoryId === parent.id)
+            return result;
+        }
+    },
+    Product: {
+        category: (parent, args, context) => {
+
+            let result = categories.find((category) => category.id === parent.categoryId)
             return result;
         }
     }
