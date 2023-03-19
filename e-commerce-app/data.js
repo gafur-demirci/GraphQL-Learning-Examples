@@ -1,6 +1,6 @@
 // Scaler Types : String, Int, Float, Boolean
 
-exports.products = [
+const products = [
     {
         id: "1",
         name: "Black Shoe",
@@ -29,7 +29,7 @@ exports.products = [
         categoryId: '3'
     },
     {
-        id: "3",
+        id: "4",
         name: "Dark Red Shoe",
         description: "New Dark Red Shoes",
         quantity: 7,
@@ -39,7 +39,7 @@ exports.products = [
     }
 ];
 
-exports.categories = [
+const categories = [
     {
         id: "1",
         name: "Men"
@@ -52,4 +52,53 @@ exports.categories = [
         id: "3",
         name: "Child"
     }
-]
+];
+
+const reviews = [
+    {
+
+        id: "1",
+        date: "2020-12-10",
+        title: "This is good",
+        comment: "One of the most decent pots",
+        rating: 3,
+        productId: "1"
+
+    },
+    {
+
+        id: "2",
+        date: "2021-12-10",
+        title: "This is not bad",
+        comment: "One of many decent pots",
+        rating: 2,
+        productId: "2"
+
+    },
+    {
+
+        id: "3",
+        date: "2022-12-10",
+        title: "This is not bad",
+        comment: "One of many decent pots",
+        rating: 2,
+        productId: "3"
+
+    },
+    {
+
+        id: "4",
+        date: "2019-12-10",
+        title: "This is bad",
+        comment: "One of the most decent pots",
+        rating: 1,
+        productId: "4"
+
+    },
+];
+
+module.exports = {
+    products,
+    categories,
+    reviews
+};
