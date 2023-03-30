@@ -95,6 +95,16 @@ const reviews = [
         productId: "4"
 
     },
+    {
+
+        id: "5",
+        date: "2019-12-10",
+        title: "This is bad",
+        comment: "One of the most decent pots",
+        rating: 3,
+        productId: "4"
+
+    },
 ];
 
 module.exports = {

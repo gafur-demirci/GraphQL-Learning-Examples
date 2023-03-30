@@ -6,7 +6,7 @@ exports.typeDefs = gql`
         age: Int
         salary: Float
         isLive: Boolean
-        products: [Product!]!
+        products(filter: ProductsFilterInput): [Product!]!
         product(id: String!): Product!
         categories: [Category!]!
         category(id: String!): Category
@@ -38,5 +38,10 @@ exports.typeDefs = gql`
         title: String!
         comment: String!
         rating: Int!
+    }
+
+    input ProductsFilterInput {
+        onSale: Boolean
+        avgRating: Int
     }
 `;
