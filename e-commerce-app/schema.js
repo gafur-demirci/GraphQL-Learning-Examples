@@ -29,7 +29,7 @@ exports.typeDefs = gql`
 
         id: String!
         name: String!
-        products: [Product!]!
+        products(filter: ProductsFilterInput): [Product!]! # products'i filterelemek icin update edildi.
     }
 
     type Review {
