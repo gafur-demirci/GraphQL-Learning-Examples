@@ -20,7 +20,6 @@ exports.typeDefs = gql`
         quantity: Int!
         price: Float!
         onSale: Boolean!
-        # categoryId: String!
         category: Category
         reviews: [Review!]!
     }
