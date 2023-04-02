@@ -1,6 +1,4 @@
-const { reviews } = require("../data");
-
-exports.Query = {
+export const Query = {
     hello: () => { return "Hello World!" },
     age: () => { return 28 },
     salary: () => { return 123456.123 },
@@ -14,16 +12,16 @@ exports.Query = {
             if (avgRating) {
                 //reviews.forEach(review => console.log(review.productId));
                 filteredProducts = filteredProducts.filter(product => {
-                    let sumRating = 0; 
+                    let sumRating = 0;
                     let numberOfReviews = 0;
                     let avg = 0;
                     reviews.forEach(review => {
-                        if(review.productId === product.id) {
+                        if (review.productId === product.id) {
                             sumRating += review.rating
                             numberOfReviews++
                         }
                     })
-                    avg = sumRating/numberOfReviews
+                    avg = sumRating / numberOfReviews
                     console.log(sumRating, numberOfReviews, avg, product.name);
                     return avg >= avgRating
                 })

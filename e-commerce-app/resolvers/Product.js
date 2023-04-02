@@ -1,4 +1,4 @@
-exports.Product = {
+export const Product = {
     category: ({ categoryId }, args, { categories }) => {
 
         let result = categories.find((category) => category.id === categoryId)

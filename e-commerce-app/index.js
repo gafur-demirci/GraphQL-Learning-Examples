@@ -1,9 +1,9 @@
-const { ApolloServer } = require('apollo-server');
-const { Query } = require('./resolvers/Query');
-const { Product } = require('./resolvers/Product');
-const { Category } = require('./resolvers/Category');
-const { typeDefs } = require('./schema');
-const { products, categories, reviews } = require('./data');
+import { ApolloServer } from 'apollo-server';
+import { Category } from './resolvers/Category.js';
+import { Product } from './resolvers/Product.js';
+import { Query } from './resolvers/Query.js';
+import { categories, products, reviews } from './data.js';
+import { typeDefs } from './schema.js';
 
 const server = new ApolloServer({
     typeDefs,

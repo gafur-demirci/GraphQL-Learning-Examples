@@ -107,8 +107,4 @@ const reviews = [
     },
 ];
 
-module.exports = {
-    products,
-    categories,
-    reviews
-};
+export {products, categories, reviews}

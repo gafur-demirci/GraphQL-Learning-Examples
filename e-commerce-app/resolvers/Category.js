@@ -1,4 +1,4 @@
-exports.Category = {
+export const Category = {
     products: ({ id }, { filter }, { products }) => {
         // category altından product'ları onSale=true olarak getirebilmek icin update edildi.
         const categoryProducts = products.filter((product) => product.categoryId === id)
