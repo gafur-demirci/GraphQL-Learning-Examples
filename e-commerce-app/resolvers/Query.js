@@ -10,7 +10,6 @@ export const Query = {
             const { onSale, avgRating } = filter
             if (onSale) return filteredProducts.filter(product => product.onSale)
             if (avgRating) {
-                //reviews.forEach(review => console.log(review.productId));
                 filteredProducts = filteredProducts.filter(product => {
                     let sumRating = 0;
                     let numberOfReviews = 0;

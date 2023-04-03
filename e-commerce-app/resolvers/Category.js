@@ -7,7 +7,6 @@ export const Category = {
         if (filter) {
             if (filter.onSale === true) return filteredCategoryProducts.filter(product => product.onSale)
             if (avgRating) {
-                //reviews.forEach(review => console.log(review.productId));
                 filteredProducts = filteredProducts.filter(product => {
                     let sumRating = 0; 
                     let numberOfReviews = 0;
