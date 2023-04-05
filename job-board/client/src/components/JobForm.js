@@ -16,21 +16,7 @@ function JobForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const job = await createJob(title,description);
-    // const { data: { job } } = await mutate({
-    //   variables: { input: { title, description } },
-    //   context: {
-    //     headers: { 'Authorization': 'Bearer ' + getAccessToken() }
-    //   },
-    //   update: (cache, { data: { job } }) => {
-    //     cache.writeQuery({
-    //       query: JOB_Query,
-    //       variables: { id: job.id },
-    //       data: { job }
-    //     });
-    //   },
-    // })
     console.log('should post a new job:', { title, description });
-    // const job = await createJob({ title, description });
     console.log('new job created:', job);
     navigate(`/jobs/${job.id}`);
   };
