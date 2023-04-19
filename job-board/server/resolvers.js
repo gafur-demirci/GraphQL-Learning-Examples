@@ -36,11 +36,6 @@ export const resolvers = {
 
     Job: {
         company: (job) => Company.findById(job.companyId),
-        // console.log('resolving company for Job', job)
-        // return {
-        //     id: 'Fake',
-        //     name: 'Fake Inc.'
-        // };
     },
     Company: {
         jobs: async (company) => Job.findAll((job) => job.companyId === company.id),
