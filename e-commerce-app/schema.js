@@ -1,7 +1,9 @@
 import { gql } from 'apollo-server';
 
 export const typeDefs = gql`
+
     type Query {
+
         hello : String
         age: Int
         salary: Float
@@ -10,6 +12,7 @@ export const typeDefs = gql`
         product(id: String!): Product!
         categories: [Category!]!
         category(id: String!): Category
+        
     }
 
     type Product {
@@ -22,6 +25,7 @@ export const typeDefs = gql`
         onSale: Boolean!
         category: Category
         reviews: [Review!]!
+
     }
 
     type Category {
@@ -29,18 +33,23 @@ export const typeDefs = gql`
         id: String!
         name: String!
         products(filter: ProductsFilterInput): [Product!]! # products'i filterelemek icin update edildi.
+
     }
 
     type Review {
+
         id: String!
         date: String!
         title: String!
         comment: String!
         rating: Int!
+
     }
 
     input ProductsFilterInput {
+
         onSale: Boolean
         avgRating: Int
+
     }
 `;
