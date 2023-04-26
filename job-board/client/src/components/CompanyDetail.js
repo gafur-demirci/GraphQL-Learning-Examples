@@ -1,16 +1,12 @@
-// import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useCompany } from '../graphql/hooks';
-// import { getCompanyById } from '../graphql/queries';
 import JobList from './JobList';
 
 function CompanyDetail() {
-  // const [company, setCompany] = useState(null);
+
   const { companyId } = useParams();
   const { company, loading } = useCompany(companyId);
-  // useEffect(() => {
-  //   getCompanyById(companyId).then(setCompany);
-  // }, [companyId])
+
   console.log('[CompanyDetail] company: ', company);
   if (loading) {
     return <p>Loading...</p>
